@@ -1,7 +1,7 @@
 ## `Front-End`
 
 Instruções : Antes de rodar o Front-end baixe as dependêcias a partir do yarn ( só digitar o yarn no terminal dentro da pasta).
-Instructions: Download the dependencies(modules) before run the App (Type Yarn in the terminal inside the folder)
+Instructions: Download the dependencies(modules) before run the App. (Type Yarn in the terminal inside the folder)
 
 ### `yarn start`
 

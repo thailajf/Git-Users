@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { Container, UserContainer, RepoContainer, Title } from './styles';
+import { useHistory, Link } from 'react-router-dom';
+import { BsArrowLeft } from 'react-icons/bs';
+import {
+  Container,
+  UserContainer,
+  RepoContainer,
+  Title,
+  HeaderContainer,
+} from './styles';
 import UserComponent from '../../Components/User';
 import Repositories from '../../Components/Repositories';
 import Icon from '../../Components/Loading';
@@ -26,7 +33,12 @@ export default function User() {
 
   return (
     <Container>
-      <Title>Profile</Title>
+      <HeaderContainer>
+        <Link to="/">
+          <BsArrowLeft size={20} color="gray" />
+        </Link>
+        <Title>Profile</Title>
+      </HeaderContainer>
       {!user ? (
         <Icon />
       ) : (

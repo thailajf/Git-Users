@@ -22,6 +22,15 @@ export const Title = styled.h2`
   font-size: 16px;
   color: ${Colors.Label};
   font-weight: normal;
-  margin: 15px 0;
   font-family: 'Roboto', sans-serif;
+  margin: 12px 0;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  svg {
+    margin-left: 12px;
+  }
 `;
