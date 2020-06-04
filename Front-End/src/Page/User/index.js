@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, UserContainer, RepoContainer } from './styles';
+import { useHistory } from 'react-router-dom';
+import { Container, UserContainer, RepoContainer, Title } from './styles';
 import UserComponent from '../../Components/User';
 import Repositories from '../../Components/Repositories';
+import Icon from '../../Components/Loading';
 
 export default function User() {
-  const [Loading, setLoading] = useState(true);
+  const { user, repositories } = useSelector((state) => state.User);
 
-  const { user, loading, repositories } = useSelector((state) => state.User);
+  const history = useHistory();
 
   const handleClick = (url) => {
     window.location.assign(url);
   };
 
   useEffect(() => {
-    const initial = async () => {
-      if (loading) {
-        await setLoading(false);
+    const initial = () => {
+      if (user === null) {
+        history.push('/');
       }
     };
     initial();
-  }, [loading]);
+  }, [user, history]);
 
   return (
     <Container>
-      <h1>Profile</h1>
-      {Loading || loading ? (
-        ''
+      <Title>Profile</Title>
+      {!user ? (
+        <Icon />
       ) : (
         <>
           <UserContainer>
@@ -39,6 +41,8 @@ export default function User() {
               handleClick={handleClick.bind(this)}
             />
           </UserContainer>
+          <Title>Repositories</Title>
+
           <RepoContainer>
             <Repositories
               repositories={repositories}

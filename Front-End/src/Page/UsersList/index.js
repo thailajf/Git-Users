@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import UserList from '../../Components/UserList';
 import api from '../../Services/api';
 import { UserRequest } from '../../Store/Modules/User/action';
 import { Title, Container } from './styles';
+import Icon from '../../Components/Loading';
 
 export default function UsersList() {
   const [Users, setUsers] = useState();
   const [Page, setPage] = useState('0');
   const [Loading, setLoading] = useState(true);
-  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleUsers = async () => {
@@ -51,14 +50,13 @@ export default function UsersList() {
 
   const handleUserPage = (user) => {
     dispatch(UserRequest(user));
-    history.push('/user');
   };
 
   return (
     <Container>
       <Title>Users</Title>
       {Loading ? (
-        ''
+        <Icon />
       ) : (
         <UserList
           users={Users}

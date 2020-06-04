@@ -8,7 +8,7 @@ export default function Repositories({ repositories, handleClick }) {
   return (
     <Container>
       {repositories.map((r) => (
-        <Data repositories={r} handleClick={handleClick} />
+        <Data key={r.id} repositories={r} handleClick={handleClick} />
       ))}
     </Container>
   );
